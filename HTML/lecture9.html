@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <div>
+            <button onclick="displayDate()">The date is: </button>
+            <p id="demo"></p>
+        </div>
+        <!-- <form> -->
+            <input type="text" id="firstname" onchange="upperCase()">
+        <!-- </form> -->
+         <div 
+         onmousedown="mDown(this)"
+         onmouseup="mUp(this)"
+          style="background-color: red; width: 120px; height: 20px; padding: 40px;">Mouse over me.</div>
+    </main>
+    <script>
+        function displayDate(){
+            document.getElementById("demo").innerHTML = new Date();
+        }
+        function upperCase(){
+            const x=document.getElementById("firstname");
+            x.value=x.value.toUpperCase();
+        }
+        function mOver(obj){
+            obj.innerHTML="Thank You";
+        }
+        function mOut(obj){
+            obj.innerHTML="Mouse over me.";
+        }
+        function mDown(obj){
+            obj.style.backgroundColor="cyan";
+            obj.innerHTML="Release me.";
+        }
+        function mUp(obj){
+            obj.style.backgroundColor="red";
+            obj.innerHTML="Thank you";
+        }
+    </script>
+</body>
+</html>
