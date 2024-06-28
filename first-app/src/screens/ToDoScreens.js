@@ -5,6 +5,9 @@ import AddTask from "../components/AddTask";
 
 const TodoScreen =() => {
     const [taskList, setTaskList]=useState([]);
+    let addNewTask =(task)=>{
+        setTaskList([...taskList,{...task, createdDate: new Date()}]);
+    }
     return(
         <>
             <div className="screen">
