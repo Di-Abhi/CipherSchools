@@ -12,11 +12,18 @@ const TodoScreen =() => {
                         onClick={(e)=>{
                             setTaskList([...taskList, {
                                 title: "Go to gym",
-                                discription: "Going to gym is good for muscle growth."
+                                description: "Going to gym is good for muscle growth.",
+                                createdDate: new Date(),
                             }])
                         }}
                      className="ui secondary button">Add Task</button>
-                {taskList.map((task) => <Task/>)}
+                     <section>
+                     <div className="ui cards">
+                     {taskList.map((task,index) => (
+                     <Task task={task} key={index}/>
+                     ))}
+                     </div>
+                     </section>
                 </div>
             </div>
         )
