@@ -1,10 +1,12 @@
 import { useState } from "react";
 import Task from "../components/Task";
+import AddTask from "../components/AddTask";
 
 
 const TodoScreen =() => {
     const [taskList, setTaskList]=useState([]);
     return(
+        <>
             <div className="screen">
                 <h1 className="ui heading center">To Do List</h1>
                 <div>
@@ -18,14 +20,17 @@ const TodoScreen =() => {
                         }}
                      className="ui secondary button">Add Task</button>
                      <section>
-                     <div className="ui cards">
-                     {taskList.map((task,index) => (
+                    <div className="ui cards">
+                    {taskList.map((task,index) => (
                      <Task task={task} key={index}/>
                      ))}
                      </div>
                      </section>
                 </div>
+                <AddTask/>
             </div>
+            
+        </>
         )
 }
 
