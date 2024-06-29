@@ -1,5 +1,11 @@
-import { Component } from "react";
+import { Component, useContext, useState } from "react";
 import TodoScreen from "./screens/ToDoScreens";
+import {createBrowserRouter ,RouterProvider} from "react-router-dom";
+import AddTask from "./components/AddTask";
+import { TaskProvider } from "./context/TaskContext";
+
+
+
 
 // class App extends Component{
 //     render(){
@@ -7,8 +13,26 @@ import TodoScreen from "./screens/ToDoScreens";
 //     }
 // }
 
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <TodoScreen/>
+    },
+    {
+        path: "/add-task",
+        element: <AddTask/>
+    }
+])
+
 const App = () => {
-    return <TodoScreen/>
+    
+
+    
+    return( 
+        <TaskProvider>
+    <RouterProvider router={router}/>
+    </TaskProvider>
+)
 };
 
 export default App;

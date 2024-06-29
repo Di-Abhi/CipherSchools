@@ -1,5 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import TaskContext from "../context/TaskContext";
+import { useNavigate } from "react-router-dom";
+
+
+
+
 const AddTask = ()=>{
+    const navigate = useNavigate();
+
+    const { addNewTask }=useContext(TaskContext)
 
     const [task, setTask] = useState({
         title: "",
@@ -14,11 +23,14 @@ const AddTask = ()=>{
 
     let onFormSubmit = (e)=>{
         e.preventDefault();
-        console.log(form)
+        addNewTask(task);
+        setTask({});
+        navigate("/");
     }
 
     return (
         <>
+        <section className="screen">
         <h3 className="ui heading center">Add New Task</h3>
         <div className="ui form">
             <form onSubmit={onFormSubmit}>
@@ -30,7 +42,8 @@ const AddTask = ()=>{
                 data-ms-editor={true}
                 placeholder="Task Title" 
                 name="title"
-                onChange={handleInputChange}/>
+                onChange={handleInputChange}
+                value={task.title}/>
             </div>
             <div className="field">
                     <label>Description</label>
@@ -39,13 +52,15 @@ const AddTask = ()=>{
                     data-ms-editor={true}
                     placeholder="Task Description" 
                     name="description"
-                    onChange={handleInputChange}/>
+                    onChange={handleInputChange}
+                    value={task.description}/>
                 </div>
                 <button type="submit" className="ui primary button">
                 Submit
                 </button>       
             </form>
         </div>
+        </section>
         </>
     )
 }
